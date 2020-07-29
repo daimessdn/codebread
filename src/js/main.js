@@ -61,21 +61,26 @@ document.addEventListener("keydown", function(event) {
     } else if (event.key == "ArrowRight") {
       currentSlide--;
     }
+    console.log(currentSlide);
   }
   slideNav(currentSlide);
 });
 
 document.addEventListener('click', function(e) {
   let clicked = document.getElementById("clicked");
-  if (clicked) {
-    currentSlide = 0;
-    slideNav(currentSlide);
-    clicked.removeAttribute("id");
-  }
+
 
   e = e || window.event;
   var target = e.target || e.srcElement,
   text = target.textContent || target.innerText;
+  
+  if (target.tagName.toLowerCase() !== "button") {
+    if (clicked) {
+      currentSlide = 0;
+      slideNav(currentSlide);
+      clicked.removeAttribute("id");
+    }
+  }
 
   if (target.className === "slides") {
     target.id = "clicked";
@@ -84,6 +89,7 @@ document.addEventListener('click', function(e) {
   } else if (target.parentElement.className === "cards") {
     target.parentElement.parentElement.id = "clicked";
   }
+
 }, false);
 
 const slideNav = (currentSlide) => {
