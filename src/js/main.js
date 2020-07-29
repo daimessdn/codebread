@@ -69,7 +69,6 @@ document.addEventListener("keydown", function(event) {
 document.addEventListener('click', function(e) {
   let clicked = document.getElementById("clicked");
 
-
   e = e || window.event;
   var target = e.target || e.srcElement,
   text = target.textContent || target.innerText;
@@ -80,14 +79,18 @@ document.addEventListener('click', function(e) {
       slideNav(currentSlide);
       clicked.removeAttribute("id");
     }
+    document.querySelector(".button").style.display = "none";
   }
 
   if (target.className === "slides") {
     target.id = "clicked";
+    document.querySelector(".button").style.display = "block";
   } else if (target.className === "cards") {
     target.parentElement.id = "clicked";
+    document.querySelector(".button").style.display = "block";
   } else if (target.parentElement.className === "cards") {
     target.parentElement.parentElement.id = "clicked";
+    document.querySelector(".button").style.display = "block";
   }
 
 }, false);

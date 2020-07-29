@@ -78,6 +78,7 @@ h1, h2, h3, h4, h5, h6, p, pre {
 
 .button {
   position: fixed;
+  display: none;
   bottom: 8px;
   right: 8px;
 }
