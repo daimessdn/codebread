@@ -5,15 +5,18 @@ const breads = [
       {
         title: "Hello",
         contents: [
-          {type: "text", content: "This is a content"},
-          {type: "text", content: "This is another content"}
+          {type: "text", content: "This is a content."},
+          {type: "text", content: "This is another content."},
+          {type: "text", content: "Click this card, and then press the right arrow to see the next of my story."}
         ]
       },
       {
         title: "I like orange",
         contents: [
-          {type: "text", content: "Orange is sweet"},
-          {type: "text", content: "and also orange is orange"}
+          {type: "text", content: "Orange is sweet."},
+          {type: "text", content: "and also orange is orange."},
+          {type: "text", content: "Press the left arrow to go bact to the previous content."}
+          {type: "text", content: "You can click another card, and the press left or right arrow to see the card content."}
         ]
       }
     ],
