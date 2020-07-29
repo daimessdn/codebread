@@ -3,7 +3,8 @@
 }
 
 body {
-  font-family: "Visuelt Pro";
+  font-family: "Roboto Mono", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
 }
 
 #card-list {
