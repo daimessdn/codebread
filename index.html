@@ -6,83 +6,7 @@
   <title>Card List</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Helvetica";
-    }
-
-    #card-list {
-      display: flex;
-      margin: 150px auto;
-      flex-wrap: wrap;
-      width: 1000px;
-    }
-
-    .slides {
-      position: relative;
-      margin: 5px;
-      padding: 15px;
-      background-color: grey;
-      width: 32%;
-      height: 400px;
-      overflow: hidden;
-      border-radius: 10px;
-    }
-
-    #clicked {
-      box-shadow: 10px 10px 20px darkgrey;
-      transition: all 0.2s ease;
-    }
-
-    pre, code, .tag {
-      font-family: "Roboto Mono", monospace;
-      border-radius: 3px;
-      font-size: 13px;
-      background-color: #242424;
-      color: #fff;
-      padding: 5px;
-      margin: 5px;
-    }
-
-    pre {
-      overflow: auto;
-      max-height: 150px;
-    }
-
-    .cards {
-      background-color: #0366d6;
-      padding: 15px;
-      width: 100%;
-      height: 100%;
-      margin-bottom: 15px;
-      color: #fff;
-      transition: all 0.5s cubic-bezier(1,-1.06,0,1);
-      transition: all 0.5s cubic-bezier(.23,1.11,.56,.97);
-      /*transition: all 0.5s ease;*/
-      border-radius: 10px;
-    }
-    
-    h1, h2, h3, h4, h5, h6, p, pre {
-      margin: 0 0 5px 0;
-      line-height: 1.5;
-    }
-
-    .tags {
-      font-family: "Roboto Mono";
-      position: absolute;
-      z-index: 100;
-      bottom: 20px;
-      right: 20px;
-    }
-
-    .tag {
-      display: inline-block;
-    }
-  </style>
+  <link href="src/main.css" rel="stylesheet">
 </head>
 <body>
   <div id="card-list"></div>
@@ -162,12 +86,12 @@
       let cardlist = document.getElementById("card-list");
 
       breads.forEach((bread) => {
-        let cards = ``;
-        let breadTags = ''
+        let cards = "";
+        let breadTags = "";
 
         bread.slides.forEach((slide) => {
-          let cardSlide = ``;
-          let cardContent = ``;
+          let cardSlide = "";
+          let cardContent = "";
 
           if (slide.title !== "") {
             cardContent += `<h3>${slide.title}</h3>`;
