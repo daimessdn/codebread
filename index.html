@@ -17,14 +17,14 @@
   <div class="button">
     <button id="prev" onclick="
       currentSlide++;
-      if (currentSlide > 0 || currentSlide <= (-1 * (document.getElementById('clicked').children.length - 1))) {
-        currentSlide = 0;
-      } slideNav(currentSlide);">prev</button>
+      if (currentSlide > 0) {
+        currentSlide = (-1 * (document.getElementById('clicked').children.length - 2));
+      } slideNav(currentSlide); console.log(currentSlide)">prev</button>
     <button id="next" onclick="
     currentSlide--; console.log(clicked.children);
-      if (currentSlide > 0 || currentSlide <= (-1 * (document.getElementById('clicked').children.length - 1))) {
+      if (currentSlide <= (-1 * (document.getElementById('clicked').children.length - 1))) {
         currentSlide = 0;
-      } slideNav(currentSlide);console.log(currentSlide);">next</button>
+      } slideNav(currentSlide);">next</button>
 
   <script src="src/js/data.js"></script>
   <script src="src/js/main.js"></script>

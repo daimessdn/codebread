@@ -58,8 +58,16 @@ document.addEventListener("keydown", function(event) {
   if (clicked !== undefined) {
     if (event.key == "ArrowLeft") {
       currentSlide++;
+
+      if (currentSlide > 0) {
+        currentSlide = (-1 * (clicked.children.length - 2));
+      }
     } else if (event.key == "ArrowRight") {
       currentSlide--;
+
+      if (currentSlide <= (-1 * (clicked.children.length - 1))) {
+        currentSlide = 0;
+      }
     }
     console.log(currentSlide);
   }
