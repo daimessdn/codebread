@@ -15,7 +15,7 @@ const breads = [
         contents: [
           {type: "text", content: "Orange is sweet."},
           {type: "text", content: "and also orange is orange."},
-          {type: "text", content: "Press the left arrow to go bact to the previous content."}
+          {type: "text", content: "Press the left arrow to go bact to the previous content."},
           {type: "text", content: "You can click another card, and the press left or right arrow to see the card content."}
         ]
       }
