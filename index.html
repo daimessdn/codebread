@@ -85,39 +85,7 @@
   </style>
 </head>
 <body>
-  <div id="card-list">
-    <!-- <div class="slides">
-      <div class="cards"></div>
-      <div class="cards"></div>
-      <span class="tags">
-        <span class="tag">#intro</span>
-      </span>
-    </div>
-
-    <div class="slides">
-      <div class="cards"></div>
-      <div class="cards"></div>
-      <span class="tags">
-        <span class="tag">#story</span>
-      </span>  
-    </div>
-
-    <div class="slides">
-      <div class="cards"></div>
-      <div class="cards"></div>
-      <div class="cards"></div>
-      <span class="tags">
-        <span class="tag">#code</span>
-        <span class="tag">#javascript</span>
-      </span>
-    </div> -->
-  </div>
-
-  <!-- <pre><code>for (let i = 1; i <= 5; i++) {
-  console.log(i)
-}
-  </code></pre> -->
-
+  <div id="card-list"></div>
 
   <script>
     const breads = [
@@ -244,58 +212,7 @@
       })
     });
 
-//     const contents = [
-//       [
-//         `<h3>Hello</h3>`,
-//         `<p>This is a content</p>`,
-//         `<p>This is another content</p>`
-//       ],
-//       [
-//         `<h3>I like orange</h3>`,
-//         `<p>Orange is sweet</p>`,
-//         `<p>and also orange is orange</p>`
-//       ],
-//       [
-//         `<h3>Story about a duck</h3>`,
-//         `<p>Once upon a time, there was a duck swimming around the river. Suddenly, he met his friend.</p>`,
-//         `<p>He asked his friend to swim together and his friend agreed.</p>`
-//       ],
-//       [
-//         `<p></p>`,
-//         `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGDqyt_-PDDNCBbaURYMUI9h4MrEhwHUHygA&usqp=CAU" alt="duck swimming" width="200">`
-//       ],
-//       [
-//         `<h3>How to print first 5 numbers in JS</h3>`,
-//         `<p>1. Type the for loop:</p>`,
-//         `<pre>for (let i = 1; i <= 5; i++) {
-
-// }</pre>`
-//       ],
-//       [
-//         `<p>2. Let's apply <code>console.log()</code> inside the loop:</p>`,
-//         `<pre>for (let i = 1; i <= 5; i++) {
-//   console.log(i);
-// }</pre>`
-//       ],
-//       [
-//         `<p>3. Yay! We did it!!!</p>`,
-//         `<pre>1
-// 2
-// 3
-// 4
-// 5</pre>`
-//       ],
-//     ];
-
-    const cards = document.querySelectorAll(".cards");
-
     let currentSlide = 0;
-
-    // for (let i = 0; i < contents.length; i++) {
-    //   contents[i].forEach(item => {
-    //     cards[i].innerHTML += item;
-    //   });
-    // }
 
     document.addEventListener("keydown", function(event) {    
       if (clicked !== undefined) {
