@@ -77,7 +77,7 @@
 </head>
 <body>
   <div id="card-list">
-    <div class="slides">
+    <!-- <div class="slides">
       <div class="cards"></div>
       <div class="cards"></div>
       <span class="tags">
@@ -101,7 +101,7 @@
         <span class="tag">#code</span>
         <span class="tag">#javascript</span>
       </span>
-    </div>
+    </div> -->
   </div>
 
   <!-- <pre><code>for (let i = 1; i <= 5; i++) {
@@ -111,58 +111,167 @@
 
 
   <script>
-    const contents = [
-      [
-        `<h3>Hello</h3>`,
-        `<p>This is a content</p>`,
-        `<p>This is another content</p>`
-      ],
-      [
-        `<h3>I like orange</h3>`,
-        `<p>Orange is sweet</p>`,
-        `<p>and also orange is orange</p>`
-      ],
-      [
-        `<h3>Story about a duck</h3>`,
-        `<p>Once upon a time, there was a duck swimming around the river. Suddenly, he met his friend.</p>`,
-        `<p>He asked his friend to swim together and his friend agreed.</p>`
-      ],
-      [
-        `<p>Finally, they swam together.</p>`,
-        `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGDqyt_-PDDNCBbaURYMUI9h4MrEhwHUHygA&usqp=CAU" alt="duck swimming" width="200">`
-      ],
-      [
-        `<h3>How to print first 5 numbers in JS</h3>`,
-        `<p>1. Type the for loop:</p>`,
-        `<pre>for (let i = 1; i <= 5; i++) {
-
-}</pre>`
-      ],
-      [
-        `<p>2. Let's apply <code>console.log()</code> inside the loop:</p>`,
-        `<pre>for (let i = 1; i <= 5; i++) {
-  console.log(i);
-}</pre>`
-      ],
-      [
-        `<p>3. Yay! We did it!!!</p>`,
-        `<pre>1
-2
-3
-4
-5</pre>`
-      ],
+    const breads = [
+      {
+        tags  : ["intro"],
+        slides: [
+          {
+            title: "Hello",
+            contents: [
+              {type: "text", content: "This is a content"},
+              {type: "text", content: "This is another content"}
+            ]
+          },
+          {
+            title: "I like orange",
+            contents: [
+              {type: "text", content: "Orange is sweet"},
+              {type: "text", content: "and also orange is orange"}
+            ]
+          }
+        ],
+      },
+      {
+        tags  : ["story"],
+        slides: [
+          {
+            title: "Story about a duck",
+            contents: [
+              {type: "text", content: "Once upon a time, there was a duck swimming around the river. Suddenly, he met his friend."},
+              {type: "text", content: "He asked his friend to swim together and his friend agreed."}
+            ]
+          },
+          {
+            title: "",
+            contents: [
+              {type: "text", content: "Finally, they swam together."},
+              {type: "image", content: {
+                url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGDqyt_-PDDNCBbaURYMUI9h4MrEhwHUHygA&usqp=CAU",
+                alt: "duck swimming"
+              }}
+            ]
+          }
+        ],
+      },
+      {
+        tags  : ["story"],
+        slides: [
+          {
+            title: "How to print first 5 numbers in JS",
+            contents: [
+              {type: "text", content: "1. Type the for loop:"},
+              {type: "code", content: "for (let i = 1; i <= 5; i++) {\n\n}"}
+            ]
+          },
+          {
+            title: "",
+            contents: [
+              {type: "text", content: "2. Let's apply <code>console.log()</code> inside the loop:"},
+              {type: "code", content: "for (let i = 1; i <= 5; i++) {\n\tconsole.log(i);\n}"}
+            ]
+          },
+          {
+            title: "",
+            contents: [
+              {type: "text", content: "3. Yay! We did it!!!"},
+              {type: "code", content: "1\n2\n3\n4\n5"}
+            ]
+          }
+        ],
+      },
     ];
+
+    const loadCards = document.addEventListener("DOMContentLoaded", () => {
+      let cardlist = document.getElementById("card-list");
+
+      breads.forEach((bread) => {
+        let cards = ``;
+
+        // console.log(bread);
+        bread.slides.forEach((slide) => {
+          // console.log(slide);
+
+          if (slide.title !== "") {
+            console.log(`<h3>${slide.title}</h3>`);
+          }
+
+          slide.contents.forEach((content) => {
+            let contentType = content.type;
+            // console.log(contentType);
+            switch (contentType) {
+              case "text":
+                console.log(`<p>${content.content}</p>`);
+                break;
+              case "image":
+                console.log(`<img src="${content.url}"
+                                  alt="${content.alt}">`);
+                break;
+              case "code":
+                console.log(`<pre><code>${content.content}</code></pre>`);
+                break;
+              default:
+                break;
+            }
+          })
+
+        });
+
+        cardlist.innerHTML += `<div class="slides>${cards}</div>`;
+      })
+    });
+
+//     const contents = [
+//       [
+//         `<h3>Hello</h3>`,
+//         `<p>This is a content</p>`,
+//         `<p>This is another content</p>`
+//       ],
+//       [
+//         `<h3>I like orange</h3>`,
+//         `<p>Orange is sweet</p>`,
+//         `<p>and also orange is orange</p>`
+//       ],
+//       [
+//         `<h3>Story about a duck</h3>`,
+//         `<p>Once upon a time, there was a duck swimming around the river. Suddenly, he met his friend.</p>`,
+//         `<p>He asked his friend to swim together and his friend agreed.</p>`
+//       ],
+//       [
+//         `<p></p>`,
+//         `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGDqyt_-PDDNCBbaURYMUI9h4MrEhwHUHygA&usqp=CAU" alt="duck swimming" width="200">`
+//       ],
+//       [
+//         `<h3>How to print first 5 numbers in JS</h3>`,
+//         `<p>1. Type the for loop:</p>`,
+//         `<pre>for (let i = 1; i <= 5; i++) {
+
+// }</pre>`
+//       ],
+//       [
+//         `<p>2. Let's apply <code>console.log()</code> inside the loop:</p>`,
+//         `<pre>for (let i = 1; i <= 5; i++) {
+//   console.log(i);
+// }</pre>`
+//       ],
+//       [
+//         `<p>3. Yay! We did it!!!</p>`,
+//         `<pre>1
+// 2
+// 3
+// 4
+// 5</pre>`
+//       ],
+//     ];
 
     const cards = document.querySelectorAll(".cards");
 
     let currentSlide = 0;
 
-    for (let i = 0; i < contents.length; i++) {
-      contents[i].forEach(item => {
-        cards[i].innerHTML += item;
-      });
-    }
+    // for (let i = 0; i < contents.length; i++) {
+    //   contents[i].forEach(item => {
+    //     cards[i].innerHTML += item;
+    //   });
+    // }
 
     document.addEventListener("keydown", function(event) {    
       if (clicked !== undefined) {
