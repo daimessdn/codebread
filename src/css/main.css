@@ -23,11 +23,12 @@ body {
   height: 400px;
   overflow: hidden;
   border-radius: 10px;
+  transform: scale(0.8);
 }
 
 #clicked {
   box-shadow: 10px 10px 20px darkgrey;
-  transform: scale(1.075);
+  transform: scale(.9);
   transition: all 0.2s ease;
 }
 
