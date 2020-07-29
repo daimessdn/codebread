@@ -55,43 +55,42 @@ breads.forEach((bread) => {
 let currentSlide = 0;
 
 document.addEventListener("keydown", function(event) {    
-if (clicked !== undefined) {
-  if (event.key == "ArrowLeft") {
-    currentSlide++;
-  } else if (event.key == "ArrowRight") {
-    currentSlide--;
+  if (clicked !== undefined) {
+    if (event.key == "ArrowLeft") {
+      currentSlide++;
+    } else if (event.key == "ArrowRight") {
+      currentSlide--;
+    }
   }
-}
-slideNav(currentSlide);
+  slideNav(currentSlide);
 });
 
 document.addEventListener('click', function(e) {
-let clicked = document.getElementById("clicked");
-if (clicked) {
-  currentSlide = 0;
-  slideNav(currentSlide);
-  clicked.removeAttribute("id");
-}
+  let clicked = document.getElementById("clicked");
+  if (clicked) {
+    currentSlide = 0;
+    slideNav(currentSlide);
+    clicked.removeAttribute("id");
+  }
 
-e = e || window.event;
-var target = e.target || e.srcElement,
-text = target.textContent || target.innerText;
+  e = e || window.event;
+  var target = e.target || e.srcElement,
+  text = target.textContent || target.innerText;
 
-if (target.className === "slides") {
-  target.id = "clicked";
-} else if (target.className === "cards") {
-  // console.log(target);
-  target.parentElement.id = "clicked";
-} else if (target.parentElement.className === "cards") {
-  target.parentElement.parentElement.id = "clicked";
-}
+  if (target.className === "slides") {
+    target.id = "clicked";
+  } else if (target.className === "cards") {
+    target.parentElement.id = "clicked";
+  } else if (target.parentElement.className === "cards") {
+    target.parentElement.parentElement.id = "clicked";
+  }
 }, false);
 
 const slideNav = (currentSlide) => {
-let motionHeight = currentSlide * 385;
-let clicked = document.getElementById("clicked").children;
+  let motionHeight = currentSlide * 385;
+  let clicked = document.getElementById("clicked").children;
 
-for (let i = 0; i < clicked.length; i++) {
-  clicked[i].style.transform = `translateY(${motionHeight}px)`;
-}
+  for (let i = 0; i < clicked.length; i++) {
+    clicked[i].style.transform = `translateY(${motionHeight}px)`;
+  }
 }
