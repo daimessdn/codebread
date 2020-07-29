@@ -49,7 +49,7 @@ breads.forEach((bread) => {
                              ${breadTags}
                            </div>
                          </div>`;
-})
+  })
 });
 
 let currentSlide = 0;
