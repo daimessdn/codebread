@@ -41,12 +41,16 @@
     pre, code, .tag {
       font-family: "Roboto Mono", monospace;
       border-radius: 3px;
-      font-size: 14px;
+      font-size: 13px;
       background-color: #242424;
       color: #fff;
       padding: 5px;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
+      margin: 5px;
+    }
+
+    pre {
+      overflow: auto;
+      max-height: 150px;
     }
 
     .cards {
@@ -57,6 +61,7 @@
       margin-bottom: 15px;
       color: #fff;
       transition: all 0.5s cubic-bezier(1,-1.06,0,1);
+      transition: all 0.5s cubic-bezier(.23,1.11,.56,.97);
       /*transition: all 0.5s ease;*/
       border-radius: 10px;
     }
@@ -70,8 +75,12 @@
       font-family: "Roboto Mono";
       position: absolute;
       z-index: 100;
-      bottom: 25px;
+      bottom: 20px;
       right: 20px;
+    }
+
+    .tag {
+      display: inline-block;
     }
   </style>
 </head>
@@ -154,7 +163,7 @@
         ],
       },
       {
-        tags  : ["story"],
+        tags  : ["code", "javascript"],
         slides: [
           {
             title: "How to print first 5 numbers in JS",
@@ -167,7 +176,7 @@
             title: "",
             contents: [
               {type: "text", content: "2. Let's apply <code>console.log()</code> inside the loop:"},
-              {type: "code", content: "for (let i = 1; i <= 5; i++) {\n\tconsole.log(i);\n}"}
+              {type: "code", content: "for (let i = 1; i <= 5; i++) {\n\ \ console.log(i);\n}"}
             ]
           },
           {
@@ -186,37 +195,52 @@
 
       breads.forEach((bread) => {
         let cards = ``;
+        let breadTags = ''
 
-        // console.log(bread);
         bread.slides.forEach((slide) => {
-          // console.log(slide);
+          let cardSlide = ``;
+          let cardContent = ``;
 
           if (slide.title !== "") {
-            console.log(`<h3>${slide.title}</h3>`);
+            cardContent += `<h3>${slide.title}</h3>`;
           }
 
+          
           slide.contents.forEach((content) => {
+
             let contentType = content.type;
-            // console.log(contentType);
+
             switch (contentType) {
               case "text":
-                console.log(`<p>${content.content}</p>`);
+                cardContent += `<p>${content.content}</p>`;
                 break;
               case "image":
-                console.log(`<img src="${content.url}"
-                                  alt="${content.alt}">`);
+                cardContent += `<img src="${content.content.url}"
+                                     alt="${content.content.alt}">`;
                 break;
               case "code":
-                console.log(`<pre><code>${content.content}</code></pre>`);
+                cardContent += `<pre><code>${content.content}</code></pre>`;
                 break;
               default:
                 break;
             }
-          })
+          });
 
+          cardSlide += `<div class="cards">${cardContent}</div>`;
+
+          cards += cardSlide;
         });
 
-        cardlist.innerHTML += `<div class="slides>${cards}</div>`;
+        bread.tags.forEach((tag) => {
+          breadTags += `<span class="tag">${tag}</span>`;
+        });
+
+        cardlist.innerHTML += `<div class="slides">
+                                 ${cards}
+                                 <div class="tags">
+                                   ${breadTags}
+                                 </div>
+                               </div>`;
       })
     });
 
