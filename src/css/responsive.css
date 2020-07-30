@@ -1,11 +1,12 @@
-@media (max-width: 1000px) {
+@media (max-width: 780px) {
   #card-list {
     width: 100%;
     margin: 0;
   }
 
   .slides {
-    width: 33%;
+    width: 32%;
+    transform: scale(0.85);
   }
 
   .button {
@@ -13,7 +14,7 @@
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 540px) {
   #card-list, .slides {
     width: 100%;
     margin: 0;
