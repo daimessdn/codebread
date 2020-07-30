@@ -39,7 +39,11 @@ breads.forEach((bread) => {
   });
 
   bread.tags.forEach((tag) => {
-    breadTags += `<span class="tag">${tag}</span>`;
+    if (tag === "javascript") {
+      breadTags += `<span class="tag" style="background-color: #e9d44d; color: #000;">${tag}</span>`;
+    } else {
+      breadTags += `<span class="tag">${tag}</span>`;
+    }
   });
 
   cardlist.innerHTML += `<div class="slides">
