@@ -4,6 +4,7 @@
 
 body {
   font-family: "Inter", "Helvetica", "Arial", sans-serif;
+  transition: background-color 0.5s ease;
 }
 
 #card-list {
@@ -16,6 +17,7 @@ body {
 .slides {
   position: relative;
   margin: 5px;
+  background-color: #fff;
   padding: 15px;
   width: 32%;
   height: 400px;

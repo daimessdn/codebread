@@ -74,7 +74,7 @@ document.addEventListener("keydown", function(event) {
         currentSlide = 0;
       }
     }
-    console.log(currentSlide);
+    // console.log(currentSlide);
   }
   slideNav(currentSlide);
 });
@@ -86,8 +86,16 @@ document.addEventListener('click', function(e) {
   var target = e.target || e.srcElement,
   text = target.textContent || target.innerText;
   
+  const cards = document.querySelectorAll(".slides");
+
+  // console.log(cards);
+  
   if (target.tagName.toLowerCase() !== "button") {
     if (clicked) {
+      document.body.style.backgroundColor = "#fff";
+      cards.forEach((card) =>{
+        card.style.opacity = 1;
+      });
       currentSlide = 0;
       slideNav(currentSlide);
       clicked.removeAttribute("id");
@@ -98,12 +106,30 @@ document.addEventListener('click', function(e) {
   if (target.className === "slides") {
     target.id = "clicked";
     document.querySelector(".button").style.display = "block";
+    document.body.style.backgroundColor = "#aaa";
+    cards.forEach((card) => {
+      if (card.id !== "clicked") {
+        card.style.opacity = 0.3;
+      }
+    });
   } else if (target.className === "cards") {
     target.parentElement.id = "clicked";
     document.querySelector(".button").style.display = "block";
+    document.body.style.backgroundColor = "#aaa";
+    cards.forEach((card) => {
+      if (card.id !== "clicked") {
+        card.style.opacity = 0.3;
+      }
+    });
   } else if (target.parentElement.className === "cards") {
     target.parentElement.parentElement.id = "clicked";
     document.querySelector(".button").style.display = "block";
+    document.body.style.backgroundColor = "#aaa";
+    cards.forEach((card) => {
+      if (card.id !== "clicked") {
+        card.style.opacity = 0.3;
+      }
+    });
   }
 
 }, false);
