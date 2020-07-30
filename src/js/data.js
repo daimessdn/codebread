@@ -83,7 +83,7 @@ const breads = [
         contents: [
           {type: "text", content: "Let's open <em>Terminal</em> on Linux (or <em>Command Prompt</em> on Windows. Create the <code>npm</code> project and install <code>mongodb</code> package."},
           {type: "code", content: "mkdir nodejs-mongodb\ncd nodejs-mongodb\nnpm init --yes"},
-          {type: "text", content: "After creating <code>npm</code>project,"},
+          {type: "text", content: "After creating <code>npm</code> project,"},
           {type: "code", content: "npm install mongodb"}
         ]
       },

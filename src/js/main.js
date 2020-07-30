@@ -26,7 +26,11 @@ breads.reverse().forEach((bread) => {
                                alt="${content.content.alt}">`;
           break;
         case "code":
-          cardContent += `<pre><code>${content.content}</code></pre>`;
+          cardContent += `<pre><code>${content.content}</code>
+                               <span class="copy" onclick="
+                                 copyCode(this.previousElementSibling);
+                                 this.innerHTML = 'copied!';
+                                " onmouseleave="this.innerHTML = 'copy'">copy</span></pre>`;
           break;
         default:
           break;
@@ -39,13 +43,19 @@ breads.reverse().forEach((bread) => {
   });
 
   bread.tags.forEach((tag) => {
-    if (tag === "javascript") {
-      breadTags += `<span class="tag" style="background-color: #e9d44d; color: #000;">${tag}</span>`;
-    } else if (tag === "mongodb") {
-      breadTags += `<span class="tag" style="background-color: #12964e;">${tag}</span>`;
-    } else {
-      breadTags += `<span class="tag">${tag}</span>`;
+    let bgc, c;
+    switch (tag) {
+      case "nodejs":
+        bgc = "#90c741"; c = "#fff"; break;
+      case "javascript":
+        bgc = "#e9d44d"; c = "#000"; break;
+      case "mongodb":
+        bgc = "#12964e"; c = "#fff"; break;
+      default:
+        bgc = "#242424"; c = "#fff"; break;
     }
+    
+    breadTags += `<span class="tag" style="background-color: ${bgc}; color: ${c};">${tag}</span>`;
   });
 
   cardlist.innerHTML += `<div class="slides">
@@ -90,7 +100,8 @@ document.addEventListener('click', function(e) {
 
   // console.log(cards);
   
-  if (target.tagName.toLowerCase() !== "button") {
+  if (target.tagName.toLowerCase() !== "button" &&
+      target.className !== "copy") {
     if (clicked) {
       document.body.style.backgroundColor = "#fff";
       cards.forEach((card) =>{
@@ -105,6 +116,10 @@ document.addEventListener('click', function(e) {
 
   if (target.className === "slides") {
     target.id = "clicked";
+
+    // currentSlide--;
+    // slideNav(currentSlide);
+
     document.querySelector(".button").style.display = "block";
     document.body.style.backgroundColor = "#aaa";
     cards.forEach((card) => {
@@ -114,6 +129,10 @@ document.addEventListener('click', function(e) {
     });
   } else if (target.className === "cards") {
     target.parentElement.id = "clicked";
+
+    // currentSlide--;
+    // slideNav(currentSlide);
+
     document.querySelector(".button").style.display = "block";
     document.body.style.backgroundColor = "#aaa";
     cards.forEach((card) => {
@@ -123,6 +142,10 @@ document.addEventListener('click', function(e) {
     });
   } else if (target.parentElement.className === "cards") {
     target.parentElement.parentElement.id = "clicked";
+    
+    // currentSlide--;
+    // slideNav(currentSlide);
+
     document.querySelector(".button").style.display = "block";
     document.body.style.backgroundColor = "#aaa";
     cards.forEach((card) => {
@@ -135,10 +158,30 @@ document.addEventListener('click', function(e) {
 }, false);
 
 const slideNav = (currentSlide) => {
-  let motionHeight = currentSlide * 385;
+  let motionHeight = currentSlide * 400;
   let clicked = document.getElementById("clicked").children;
 
   for (let i = 0; i < clicked.length; i++) {
     clicked[i].style.transform = `translateY(${motionHeight}px)`;
+  }
+}
+
+const copyCode = (element) => {
+  let range = document.createRange();
+  range.selectNode(element);
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+}
+
+function openFullscreen(elem) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
   }
 }
