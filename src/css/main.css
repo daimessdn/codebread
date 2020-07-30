@@ -4,7 +4,6 @@
 
 body {
   font-family: "Inter", "Helvetica", "Arial", sans-serif;
-  font-size: 14px;
 }
 
 #card-list {
@@ -34,11 +33,10 @@ body {
 pre, code, .tag {
   font-family: "Roboto Mono", monospace;
   border-radius: 3px;
-  font-size: 13px;
   background-color: #242424;
   color: #fff;
-  padding: 5px;
-  margin: 5px;
+  padding: 3px;
+  margin: 3px;
 }
 
 pre {
@@ -67,7 +65,7 @@ pre code {
 }
 
 h1, h2, h3, h4, h5, h6, p, pre {
-  margin: 0 0 5px 0;
+  margin: 0 0 10px 0;
   line-height: 1.5;
 }
 

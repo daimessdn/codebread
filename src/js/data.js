@@ -69,4 +69,33 @@ const breads = [
       }
     ],
   },
+  {
+    tags  : ["nodejs", "mongodb"],
+    slides: [
+      {
+        title: "Using MongoDB in Node.js (part 1)",
+        contents: [
+          {type: "text", content: "In this time, we will learn how to use MongoDB in Node.js"}
+        ]
+      },
+      {
+        title: "Installing <code>mongodb</code> module",
+        contents: [
+          {type: "text", content: "Let's open <em>Terminal</em> on Linux (or <em>Command Prompt</em> on Windows. Create the <code>npm</code> project and install <code>mongodb</code> package."},
+          {type: "code", content: "mkdir nodejs-mongodb\ncd nodejs-mongodb\nnpm init --yes"},
+          {type: "text", content: "After creating <code>npm</code>project,"},
+          {type: "code", content: "npm install mongodb"}
+        ]
+      },
+      {
+        title: "Initiated JavaScript config",
+        contents: [
+          {type: "text", content: "Create the empty <code>app.js</code> file and import <code>mongodb</code> module."},
+          {type: "code", content: "const mongo = require('mongodb').MongoClient;"},
+          {type: "text", content: "Still in <code>app.js</code>, add the MongoDB localhost variable"},
+          {type: "code", content: "const mongo = require('mongodb').MongoClient;\n\nconst url = 'mongodb://localhost:27017'"}
+        ]
+      },
+    ],
+  },
 ];

@@ -1,7 +1,7 @@
 const loadCards = document.addEventListener("DOMContentLoaded", () => {
 let cardlist = document.getElementById("card-list");
 
-breads.forEach((bread) => {
+breads.reverse().forEach((bread) => {
   let cards = "";
   let breadTags = "";
 
@@ -41,6 +41,8 @@ breads.forEach((bread) => {
   bread.tags.forEach((tag) => {
     if (tag === "javascript") {
       breadTags += `<span class="tag" style="background-color: #e9d44d; color: #000;">${tag}</span>`;
+    } else if (tag === "mongodb") {
+      breadTags += `<span class="tag" style="background-color: #12964e;">${tag}</span>`;
     } else {
       breadTags += `<span class="tag">${tag}</span>`;
     }
