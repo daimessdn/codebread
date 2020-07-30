@@ -12,7 +12,6 @@ breads.forEach((bread) => {
     if (slide.title !== "") {
       cardContent += `<h3>${slide.title}</h3>`;
     }
-
     
     slide.contents.forEach((content) => {
 
