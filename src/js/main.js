@@ -158,7 +158,15 @@ document.addEventListener('click', function(e) {
 }, false);
 
 const slideNav = (currentSlide) => {
-  let motionHeight = currentSlide * 400;
+  let motion;
+  if (document.fullscreen === true) {
+    motion = screen.height;
+    console.log(motion)
+  } else {
+    motion = 400;
+  }
+
+  let motionHeight = currentSlide * motion;
   let clicked = document.getElementById("clicked").children;
 
   for (let i = 0; i < clicked.length; i++) {
