@@ -47,6 +47,11 @@ pre {
   max-height: 150px;
 }
 
+pre code {
+  margin: 0;
+  padding: 0;
+}
+
 .cards {
   background-color: #0366d6;
   padding: 15px;
