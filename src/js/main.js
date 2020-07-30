@@ -1,6 +1,15 @@
 const loadCards = document.addEventListener("DOMContentLoaded", () => {
 let cardlist = document.getElementById("card-list");
 
+const endMsg = `
+  <div id="end-msg">
+    <p>Hey, you reach <strong>at the end</strong> of the blog presentation.</p>
+    <p>You can press <strong>one more next button</strong> to exit fullscreen, or<br />
+       you can see previous slide with one or more <strong>previous button</strong>
+    </p>
+  </div>
+`;
+
 breads.reverse().forEach((bread) => {
   let cards = "";
   let breadTags = "";
@@ -60,6 +69,7 @@ breads.reverse().forEach((bread) => {
 
   cardlist.innerHTML += `<div class="slides">
                            ${cards}
+                           ${endMsg}
                            <div class="tags">
                              ${breadTags}
                            </div>
@@ -75,13 +85,21 @@ document.addEventListener("keydown", function(event) {
       currentSlide++;
 
       if (currentSlide > 0) {
-        currentSlide = (-1 * (clicked.children.length - 2));
+        currentSlide = (-1 * (clicked.children.length - 3));
       }
     } else if (event.key == "ArrowRight") {
       currentSlide--;
 
-      if (currentSlide <= (-1 * (clicked.children.length - 1))) {
-        currentSlide = 0;
+      if (currentSlide <= (-1 * (clicked.children.length)) + 1) {
+        if (document.fullscreen === true) {
+          closeFullscreen(clicked);
+          currentSlide = 0;
+        }
+
+      } else if (currentSlide <= (-1 * (clicked.children.length)) + 2) {
+        if (document.fullscreen === false) {
+          currentSlide = 0;
+        }
       }
     }
     // console.log(currentSlide);
@@ -191,5 +209,17 @@ function openFullscreen(elem) {
     elem.webkitRequestFullscreen();
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen(elem) {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) { /* Firefox */
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE/Edge */
+    document.msExitFullscreen();
   }
 }

@@ -26,7 +26,17 @@
 }
 
 @media all and (display-mode: fullscreen) {
-  h1, h2, h3, h4, h5, h6, p {
-    margin-bottom: 10px; 
+  h1, h2, h3, h4, h5, h6, p, pre, img {
+    margin: 20px;
+  }
+
+  .button {
+    left: 8px;
+    z-index: 100;
+    display: inline-block;
+  }
+
+  .cards img {
+    width: 50%;
   }
 }

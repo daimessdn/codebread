@@ -17,12 +17,19 @@ body {
 
 .slides {
   position: relative;
-  background-color: #fff;
+  background-color: #000;
+  color: #fff;
   width: 32%;
   height: 400px;
   overflow: hidden;
   border-radius: 10px;
   transform: scale(0.8);
+}
+
+#end-msg {
+  z-index: -10;
+  position: fixed;
+  top: -2;
 }
 
 #clicked {
@@ -71,8 +78,11 @@ code {
 
 .cards {
   padding: 15px;
+  background-color: #fff;
+  color: #000;
   width: 100%;
   height: 100%;
+  z-index: 0;
   /*transition: all 0.5s cubic-bezier(1,-1.06,0,1);*/
   transition: all 0.5s cubic-bezier(.23,1.11,.56,.97);
   /*transition: all 0.5s ease;*/
@@ -91,7 +101,7 @@ h1, h2, h3, h4, h5, h6, p, pre {
 
 .tags {
   font-family: "Roboto Mono";
-  position: absolute;
+  position: fixed;
   z-index: 100;
   bottom: 20px;
   right: 20px;
@@ -105,7 +115,7 @@ h1, h2, h3, h4, h5, h6, p, pre {
   position: fixed;
   display: none;
   bottom: 8px;
-  right: 8px;
+  left: 8px;
 }
 
 .button button {
