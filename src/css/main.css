@@ -7,6 +7,10 @@ body {
   font-size: 14px;
 }
 
+h1, h2, h3, h4, h5, h6, .button {
+  font-family: 'Major Mono Display', monospace;
+}
+
 #card-list {
   display: flex;
   margin: 150px auto;
@@ -54,7 +58,7 @@ pre {
   height: 100%;
   margin-bottom: 15px;
   color: #fff;
-  transition: all 0.5s cubic-bezier(1,-1.06,0,1);
+  /*transition: all 0.5s cubic-bezier(1,-1.06,0,1);*/
   transition: all 0.5s cubic-bezier(.23,1.11,.56,.97);
   /*transition: all 0.5s ease;*/
   border-radius: 10px;
@@ -69,9 +73,6 @@ h1, h2, h3, h4, h5, h6, p, pre {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6, .button, {
-  font-family: "Major Mono Display";
-}
 
 .tags {
   font-family: "Roboto Mono";
