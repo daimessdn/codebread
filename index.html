@@ -16,6 +16,7 @@
 </head>
 <body>
   <div id="card-list"></div>
+  
   <div class="button">
     <button id="prev" onclick="
       currentSlide++;
@@ -27,7 +28,9 @@
       if (currentSlide <= (-1 * (document.getElementById('clicked').children.length - 1))) {
         currentSlide = 0;
       } slideNav(currentSlide);">next</button>
+    </div>
 
+    <p onclick="this.innerHTML = `${window.innerWidth} ${window.innerHeight}";>click me</p>
   <script src="src/js/data.js"></script>
   <script src="src/js/main.js"></script>
 </body>
