@@ -1,3 +1,18 @@
+@media (max-width: 1000px) {
+  #card-list {
+    width: 100%;
+    margin: 0;
+  }
+
+  .slides {
+    width: 48%;
+  }
+
+  .button {
+    left: 8px;
+  }
+}
+
 @media (max-width: 670px) {
   #card-list, .slides {
     width: 100%;
