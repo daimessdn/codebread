@@ -11,6 +11,7 @@ body {
   display: flex;
   margin: 150px auto;
   flex-wrap: wrap;
+  justify-content: center;
   width: 1000px;
 }
 
