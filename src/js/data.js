@@ -18,13 +18,6 @@ const breads = [
           {type: "text", content: "Press the left arrow to go bact to the previous content."},
           {type: "text", content: "You can click another card, and the press left or right arrow to see the card content."}
         ]
-      },
-      {
-        title: "See you on GitHub",
-        contents: [
-          {type: "text", content: "You can see me on GitHub. See you there..."},
-          {type: "homepage", url: "https://twitter.com/daimessdn"},
-        ]
       }
     ],
   },

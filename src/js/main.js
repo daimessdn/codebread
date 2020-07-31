@@ -1,5 +1,3 @@
-hljs.initHighlightingOnLoad();
-
 const loadCards = document.addEventListener("DOMContentLoaded", () => {
 let cardlist = document.getElementById("card-list");
 
