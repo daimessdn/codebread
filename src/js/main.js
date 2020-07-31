@@ -1,3 +1,5 @@
+hljs.initHighlightingOnLoad();
+
 const loadCards = document.addEventListener("DOMContentLoaded", () => {
 let cardlist = document.getElementById("card-list");
 
@@ -35,12 +37,17 @@ breads.reverse().forEach((bread) => {
                                alt="${content.content.alt}">`;
           break;
         case "code":
-          cardContent += `<pre><code>${content.content}</code>
+          cardContent += `<pre><code class="${content.lang}">${content.content}</code>
                                <span class="copy" onclick="
                                  copyCode(this.previousElementSibling);
                                  this.innerHTML = 'copied!';
                                 " onmouseleave="this.innerHTML = 'copy'">copy</span></pre>`;
           break;
+        case "homepage":
+          cardContent += `<iframe src="${content.url}" style="width: 30%; height: 70%;"></iframe>`;
+          break;
+        case "youtube":
+          cardContent += `<iframe width="560" height="315" src="${content.url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         default:
           break;
       }
@@ -52,19 +59,9 @@ breads.reverse().forEach((bread) => {
   });
 
   bread.tags.forEach((tag) => {
-    let bgc, c;
-    switch (tag) {
-      case "nodejs":
-        bgc = "#90c741"; c = "#fff"; break;
-      case "javascript":
-        bgc = "#e9d44d"; c = "#000"; break;
-      case "mongodb":
-        bgc = "#12964e"; c = "#fff"; break;
-      default:
-        bgc = "#242424"; c = "#fff"; break;
-    }
+    const tc = getTagColor(tag);
     
-    breadTags += `<span class="tag" style="background-color: ${bgc}; color: ${c};">${tag}</span>`;
+    breadTags += `<span class="tag" style="background-color: ${tc.bgc}; color: ${tc.c};">${tag}</span>`;
   });
 
   cardlist.innerHTML += `<div class="slides">
@@ -81,25 +78,21 @@ let currentSlide = 0;
 
 document.addEventListener("keydown", function(event) {    
   if (clicked !== undefined) {
-    if (event.key == "ArrowLeft") {
-      currentSlide++;
+    if (event.key === "ArrowLeft") {  
+      slideNext();
+      event.altKey;
 
-      if (currentSlide > 0) {
-        currentSlide = (-1 * (clicked.children.length - 3));
-      }
-    } else if (event.key == "ArrowRight") {
-      currentSlide--;
+    } else if (event.key === "ArrowRight") {
+      slidePrev();
+      event.altKey;
 
-      if (currentSlide <= (-1 * (clicked.children.length)) + 1) {
-        if (document.fullscreen === true) {
-          closeFullscreen(clicked);
-          currentSlide = 0;
-        }
+    } else if (event.key === "Escape") {
+      if (document.fullscreen === true) {
+        currentSlide = 0;
+        slideNav(currentSlide);
+        event.altKey;
 
-      } else if (currentSlide <= (-1 * (clicked.children.length)) + 2) {
-        if (document.fullscreen === false) {
-          currentSlide = 0;
-        }
+        closeFullscreen(clicked);
       }
     }
     // console.log(currentSlide);
@@ -116,15 +109,15 @@ document.addEventListener('click', function(e) {
   
   const cards = document.querySelectorAll(".slides");
 
-  // console.log(cards);
-  
   if (target.tagName.toLowerCase() !== "button" &&
       target.className !== "copy") {
     if (clicked) {
       document.body.style.backgroundColor = "#fff";
+
       cards.forEach((card) =>{
         card.style.opacity = 1;
       });
+
       currentSlide = 0;
       slideNav(currentSlide);
       clicked.removeAttribute("id");
@@ -153,6 +146,7 @@ document.addEventListener('click', function(e) {
 
     document.querySelector(".button").style.display = "block";
     document.body.style.backgroundColor = "#aaa";
+
     cards.forEach((card) => {
       if (card.id !== "clicked") {
         card.style.opacity = 0.3;
@@ -172,7 +166,6 @@ document.addEventListener('click', function(e) {
       }
     });
   }
-
 }, false);
 
 const slideNav = (currentSlide, motion = (document.fullscreen === true ? screen.height : 400)) => {
@@ -183,7 +176,7 @@ const slideNav = (currentSlide, motion = (document.fullscreen === true ? screen.
   for (let i = 0; i < clicked.length; i++) {
     clicked[i].style.transform = `translateY(${motionHeight}px)`;
   }
-}
+};
 
 const copyCode = (element) => {
   let range = document.createRange();
@@ -191,25 +184,24 @@ const copyCode = (element) => {
   window.getSelection().addRange(range);
   document.execCommand('copy');
   window.getSelection().removeAllRanges();
-}
+};
 
-function openFullscreen(elem) {
+const openFullscreen = (elem) => {
+
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
-    slideNav(currentSlide, screenHeight - 400);
   } else if (elem.mozRequestFullScreen) { /* Firefox */
     elem.mozRequestFullScreen();
-    slideNav(currentSlide, screenHeight - 400);
   } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
     elem.webkitRequestFullscreen();
-    slideNav(currentSlide, screenHeight - 400);
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();
-    slideNav(currentSlide, screenHeight - 400);
   }
-}
 
-function closeFullscreen(elem) {
+  slideNav(currentSlide, screen.height); 
+};
+
+const closeFullscreen = (elem) => {
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.mozCancelFullScreen) { /* Firefox */
@@ -219,4 +211,42 @@ function closeFullscreen(elem) {
   } else if (document.msExitFullscreen) { /* IE/Edge */
     document.msExitFullscreen();
   }
-}
+  slideNav(currentSlide, 400);
+};
+
+const slideNext = () => {
+  currentSlide++;
+
+  if (currentSlide > 0) {
+    currentSlide = (-1 * (clicked.children.length - 3));
+  }
+};
+
+const slidePrev = () => {
+  currentSlide--;
+
+  if (currentSlide <= (-1 * (clicked.children.length)) + 1) {
+    if (document.fullscreen === true) {
+      closeFullscreen(clicked);
+      currentSlide = 0;
+    }
+
+  } else if (currentSlide <= (-1 * (clicked.children.length)) + 2) {
+    if (document.fullscreen === false) {
+      currentSlide = 0;
+    }
+  }
+};
+
+const getTagColor = (tag) => {
+  switch (tag) {
+    case "nodejs":
+      return {bgc: "#90c741", c: "#fff"};
+    case "javascript":
+      return {bgc: "#e9d44d", c: "#000"};
+    case "mongodb":
+      return {bgc: "#12964e", c: "#fff"};
+    default:
+      return {bgc: "#242424", c: "#fff"};
+  }
+};

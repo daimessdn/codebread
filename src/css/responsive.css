@@ -30,6 +30,10 @@
     margin: 20px;
   }
 
+  iframe {
+    margin-left: 20px;
+  }
+
   .button {
     left: 8px;
     z-index: 100;
