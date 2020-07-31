@@ -175,14 +175,7 @@ document.addEventListener('click', function(e) {
 
 }, false);
 
-const slideNav = (currentSlide) => {
-  let motion;
-  if (document.fullscreen === true) {
-    motion = screen.height;
-    console.log(motion)
-  } else {
-    motion = 400;
-  }
+const slideNav = (currentSlide, motion = (document.fullscreen === true ? screen.height : 400)) => {
 
   let motionHeight = currentSlide * motion;
   let clicked = document.getElementById("clicked").children;
@@ -203,12 +196,16 @@ const copyCode = (element) => {
 function openFullscreen(elem) {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
+    slideNav(currentSlide, screenHeight - 400);
   } else if (elem.mozRequestFullScreen) { /* Firefox */
     elem.mozRequestFullScreen();
+    slideNav(currentSlide, screenHeight - 400);
   } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
     elem.webkitRequestFullscreen();
+    slideNav(currentSlide, screenHeight - 400);
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();
+    slideNav(currentSlide, screenHeight - 400);
   }
 }
 

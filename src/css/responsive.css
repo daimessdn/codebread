@@ -39,4 +39,8 @@
   .cards img {
     width: 50%;
   }
+
+  .slides, .cards {
+    border-radius: 0;
+  }
 }
