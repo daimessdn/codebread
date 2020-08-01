@@ -109,8 +109,9 @@ document.addEventListener('click', function(e) {
 
   if (target.tagName.toLowerCase() !== "button" &&
       target.className !== "copy") {
+    console.log(target.className, target.parentElement  )
     if (clicked) {
-      if (target.className === "cards" && target.parentElement !== clicked) {
+      if (target.parentElement !== clicked) {
         document.body.style.backgroundColor = "#fff";
 
         cards.forEach((card) =>{
