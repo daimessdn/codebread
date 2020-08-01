@@ -66,6 +66,13 @@ const breads = [
           {type: "text", content: "3. Yay! We did it!!!"},
           {type: "code", lang: "javascript", content: "1\n2\n3\n4\n5"}
         ]
+      },
+      {
+        title: "Try it yourself!",
+        contents: [
+          {type: "text", content: "Let's try on the online compiler in this slide. You can also play yourself with this online compiler below."},
+          {type: "homepage", url: "https://glot.io/new/javascript"}
+        ]
       }
     ],
   },
