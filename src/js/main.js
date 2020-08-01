@@ -110,17 +110,19 @@ document.addEventListener('click', function(e) {
   if (target.tagName.toLowerCase() !== "button" &&
       target.className !== "copy") {
     if (clicked) {
-      document.body.style.backgroundColor = "#fff";
+      if (target.className === "cards" && target.parentElement !== clicked) {
+        document.body.style.backgroundColor = "#fff";
 
-      cards.forEach((card) =>{
-        card.style.opacity = 1;
-      });
+        cards.forEach((card) =>{
+          card.style.opacity = 1;
+        });
 
-      currentSlide = 0;
-      slideNav(currentSlide);
-      clicked.removeAttribute("id");
+        currentSlide = 0;
+        slideNav(currentSlide);
+        clicked.removeAttribute("id");
+      }
+      document.querySelector(".button").style.display = "none";
     }
-    document.querySelector(".button").style.display = "none";
   }
 
   if (target.className === "slides") {
