@@ -13,6 +13,7 @@
   
   <link href="src/css/main.css" rel="stylesheet">
   <link href="src/css/responsive.css" rel="stylesheet">
+  <link href="src/css/print.css" rel="stylesheet" media="print">
 </head>
 <body>
   <div id="card-list"></div>
@@ -21,17 +22,21 @@
     <button id="prev" onclick="
       currentSlide++;
       if (currentSlide > 0) {
-        currentSlide = (-1 * (document.getElementById('clicked').children.length - 2));
+        currentSlide = (-1 * (document.getElementById('clicked').children.length - 3));
       } slideNav(currentSlide); console.log(currentSlide)">prev</button>
     <button id="next" onclick="
     currentSlide--; console.log(clicked.children);
-      if (currentSlide <= (-1 * (document.getElementById('clicked').children.length - 1))) {
+      if (currentSlide <= (-1 * (document.getElementById('clicked').children.length - 2))) {
         currentSlide = 0;
       } slideNav(currentSlide);">next</button>
     <button id="fullscreen" onclick="openFullscreen(clicked)">fullscreen</button>
-    </div>
-    &gt;
-    <!-- <p onclick="this.innerHTML = `${window.innerWidth} ${window.innerHeight}`;">click me</p> -->
+    <button id="print" onclick="
+      document.querySelector('.button').style.display = 'none';
+      window.print();
+      document.querySelector('.button').style.display = 'block';
+    ">print</button>
+  </div>
+  <!-- <p onclick="this.innerHTML = `${window.innerWidth} ${window.innerHeight}`;">click me</p> -->
   <script src="src/js/functions.js"></script>
   <script src="src/js/data.js"></script>
   <script src="src/js/main.js"></script>

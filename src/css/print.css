@@ -1,0 +1,86 @@
+@media print {
+  @page { margin: 0; padding: 0; }
+  body { margin: 0; padding: 0;
+         width: 100%;
+         overflow: scroll;
+         background-color: #fff;
+         color: #000;}
+
+  h1, h2, h3, h4, h5, h6, p, pre, img {
+    margin: 20px;
+  }
+
+  iframe {
+    margin-left: 20px;
+  }
+
+  #card-list {
+    margin: 0;
+    width: 100%;
+    display: block;
+  }
+
+  .slides {
+    background-color: #000;
+    display: none;
+  }
+
+  .slides .cards {
+    background-color: #fff;
+    display: none;
+  }
+
+  #clicked {
+    display: block;
+    transform: scale(1);
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  #clicked .cards {
+    display: inline-block;
+    height: 100vh;
+  }
+
+  .cards img {
+    width: 50%;
+  }
+
+  .slides, .cards {
+    border-radius: 0;
+  }
+
+  .button, .copy {
+    display: none;
+  }
+
+  pre, code, .tag {
+    font-family: "Roboto Mono", monospace;
+    border-radius: 3px;
+    background-color: #242424;
+    color: #fff;
+  }
+
+  #end-msg {
+    display: none;
+  }
+
+  pre {
+    overflow: auto;
+  }
+
+  pre code {
+    margin: 0;
+    padding: 0;
+  }
+
+  code {
+    padding: 3px;
+  }
+
+  .tag {
+    margin: 2px;
+    padding: 5px;
+  }
+}

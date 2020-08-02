@@ -35,8 +35,7 @@ breads.reverse().forEach((bread) => {
                                alt="${content.content.alt}">`;
           break;
         case "code":
-          cardContent += `<pre><code class="${content.lang}">${content.content}</code>
-                               <span class="copy" onclick="
+          cardContent += `<pre><code class="${content.lang}">${content.content}</code><span class="copy" onclick="
                                  copyCode(this.previousElementSibling);
                                  this.innerHTML = 'copied!';
                                 " onmouseleave="this.innerHTML = 'copy'">copy</span></pre>`;
