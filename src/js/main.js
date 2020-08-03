@@ -1,3 +1,11 @@
+hljs.initHighlightingOnLoad();
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+
 const loadCards = document.addEventListener("DOMContentLoaded", () => {
 let cardlist = document.getElementById("card-list");
 

@@ -42,7 +42,7 @@ pre, code, .tag {
   font-family: "Roboto Mono", monospace;
   border-radius: 3px;
   background-color: #242424;
-  color: #fff;
+  /* color: #fff; */
 }
 
 pre {
@@ -60,6 +60,7 @@ pre code {
 
 code {
   padding: 3px;
+  color: #fff;
 }
 
 .tag {
@@ -74,6 +75,7 @@ code {
   right: 2px;
   padding: 2px;
   border: 1px solid #fff;
+  color: #fff;
 }
 
 .cards {
