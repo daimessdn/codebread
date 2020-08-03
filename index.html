@@ -9,7 +9,7 @@
   <title>Card List</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/monokai-sublime.min.css">
   
@@ -25,18 +25,34 @@
       currentSlide++;
       if (currentSlide > 0) {
         currentSlide = (-1 * (document.getElementById('clicked').children.length - 3));
-      } slideNav(currentSlide); console.log(currentSlide)">prev</button>
+      } slideNav(currentSlide); console.log(currentSlide)">
+        <img src="src/icons/arrow-left-short.svg"
+             alt="prev"
+             title="previous" />
+      </button>
     <button id="next" onclick="
     currentSlide--; console.log(clicked.children);
       if (currentSlide <= (-1 * (document.getElementById('clicked').children.length - 2))) {
         currentSlide = 0;
-      } slideNav(currentSlide);">next</button>
-    <button id="fullscreen" onclick="openFullscreen(clicked)">fullscreen</button>
+      } slideNav(currentSlide);">
+        <img src="src/icons/arrow-right-short.svg"
+             alt="next"
+             title="next" />
+    </button>
+    <button id="fullscreen" onclick="openFullscreen(clicked)">
+        <img src="src/icons/easel.svg"
+             alt="fullscreen"
+             title="fullscreen" />
+    </button>
     <button id="print" onclick="
       document.querySelector('.button').style.display = 'none';
       window.print();
       document.querySelector('.button').style.display = 'block';
-    ">print</button>
+    ">
+        <img src="src/icons/printer.svg"
+             alt="print"
+             title="print" />
+    </button>
   </div>
   <!-- <p onclick="this.innerHTML = `${window.innerWidth} ${window.innerHeight}`;">click me</p> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
