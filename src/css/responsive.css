@@ -7,6 +7,7 @@
   .slides {
     width: 48%;
     transform: scale(0.82);
+    background-color: #000;
   }
 
   .button {
@@ -22,6 +23,10 @@
 
   .button {
     left: 8px;
+  }
+
+  #end-msg, #end-msg p {
+    margin: 20px;  
   }
 }
 
