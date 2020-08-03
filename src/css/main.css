@@ -64,6 +64,7 @@ code {
 }
 
 .tag {
+  display: inline-block;
   margin: 2px;
   padding: 5px;
 }
@@ -109,15 +110,37 @@ h1, h2, h3, h4, h5, h6, p, pre {
   right: 20px;
 }
 
-.tag {
-  display: inline-block;
-}
-
-.button, .nav-slide {
+.button {
   position: fixed;
   display: none;
   bottom: 8px;
   left: 8px;
+}
+
+.slide-nav {
+  font-family: "Roboto Mono";
+  background-color: #242424;
+  color: #fff;
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.pages {
+  background-color: #fff;
+  color: #000;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.ss-btn {
+  border: 1px solid #fff;
+  padding: 2px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .button button {

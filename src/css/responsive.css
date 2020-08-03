@@ -40,6 +40,10 @@
     display: inline-block;
   }
 
+  .slide-nav {
+    display: block;
+  }
+
   .slides {
     background-color: #000;
   }

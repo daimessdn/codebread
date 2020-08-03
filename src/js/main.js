@@ -22,14 +22,16 @@ breads.reverse().forEach((bread) => {
   let cards = "";
   let breadTags = "";
 
+  let slideOrder = 1;
+
   bread.slides.forEach((slide) => {
     let cardSlide = "";
     let cardContent = "";
 
     if (slide.title !== "") {
       cardContent += `<h3>${slide.title}</h3>`;
-    }
-    
+    }    
+
     slide.contents.forEach((content) => {
 
       let contentType = content.type;
@@ -58,9 +60,17 @@ breads.reverse().forEach((bread) => {
       }
     });
 
-    cardSlide += `<div class="cards">${cardContent}</div>`;
+    cardSlide += `<div class="cards">
+                    ${cardContent}
+                    <div class="slide-nav">
+                      <span class="pages">${slideOrder} / ${bread.slides.length}</span>
+                      <span class="ss-btn" onclick="closeFullscreen()">&times;</span>
+                    </div>
+                  </div>`;
 
     cards += cardSlide;
+
+    slideOrder++;
   });
 
   bread.tags.forEach((tag) => {
@@ -115,7 +125,8 @@ document.addEventListener('click', function(e) {
   const cards = document.querySelectorAll(".slides");
 
   if (target.tagName.toLowerCase() !== "button" &&
-      target.className !== "copy") {
+      target.className !== "copy" &&
+      target.parentElement !== "slide-nav") {
     if (clicked) {
       if (target.parentElement !== clicked &&
           target.parentElement.parentElement !== clicked) {
