@@ -124,9 +124,9 @@ document.addEventListener('click', function(e) {
   
   const cards = document.querySelectorAll(".slides");
 
-  if (target.tagName.toLowerCase() !== "button" &&
+  if (target.parentElement.className !== "button" &&
       target.className !== "copy" &&
-      target.parentElement !== "slide-nav") {
+      target.parentElement.className !== "slide-nav") {
     if (clicked) {
       if (target.parentElement !== clicked &&
           target.parentElement.parentElement !== clicked) {
