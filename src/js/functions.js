@@ -81,26 +81,27 @@ const getTagColor = (tag) => {
   }
 };
 
-const addCardContent = (contentType, content, cardContent) => {
+const addCardContent = (contentType, content) => {
   switch (contentType) {
     case "text":
-      cardContent += `<p>${content.content}</p>`;
-      break;
+      return `<p>${content.content}</p>`;
     case "image":
-      cardContent += `<img src="${content.content.url}"
+      return `<img src="${content.content.url}"
                            alt="${content.content.alt}">`;
-      break;
     case "code":
-      cardContent += `<pre><code class="${content.lang}">${content.content}</code><span class="copy" onclick="
-                             copyCode(this.previousElementSibling);
-                             this.innerHTML = 'copied!';
-                            " onmouseleave="this.innerHTML = 'copy'">copy</span></pre>`;
-      break;
+      return`<pre><code
+                              class="${content.lang}"
+                            >${content.content}</code><span
+                                                            class="copy"
+                                                            onclick="
+                                                                     copyCode(this.previousElementSibling);
+                                                                     this.innerHTML = 'copied!';
+                                                            " onmouseleave="this.innerHTML = 'copy'">copy</span></pre>`;
     case "homepage":
-      cardContent += `<iframe src="${content.url}" style="width: 30%; height: 70%;"></iframe>`;
-      break;
+      return`<iframe src="${content.url}"
+                              style="width: 30%; height: 70%;"></iframe>`;
     case "youtube":
-      cardContent += `<iframe width="560"
+      return`<iframe width="560"
                               height="315"
                               src="${content.url}"
                               frameborder="0"
@@ -108,6 +109,8 @@ const addCardContent = (contentType, content, cardContent) => {
                               allowfullscreen>
                       </iframe>`;
     default:
-      break;
+      return;
   }
-}
+
+  return cardContent;
+};

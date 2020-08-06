@@ -34,7 +34,7 @@ breads.reverse().forEach((bread) => {
 
     slide.contents.forEach((content) => {
       let contentType = content.type;
-      addCardContent(contentType, content, cardContent);
+      cardContent += addCardContent(contentType, content);
     });
 
     cardSlide += `<div class="cards">
