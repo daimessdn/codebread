@@ -33,31 +33,8 @@ breads.reverse().forEach((bread) => {
     }    
 
     slide.contents.forEach((content) => {
-
       let contentType = content.type;
-
-      switch (contentType) {
-        case "text":
-          cardContent += `<p>${content.content}</p>`;
-          break;
-        case "image":
-          cardContent += `<img src="${content.content.url}"
-                               alt="${content.content.alt}">`;
-          break;
-        case "code":
-          cardContent += `<pre><code class="${content.lang}">${content.content}</code><span class="copy" onclick="
-                                 copyCode(this.previousElementSibling);
-                                 this.innerHTML = 'copied!';
-                                " onmouseleave="this.innerHTML = 'copy'">copy</span></pre>`;
-          break;
-        case "homepage":
-          cardContent += `<iframe src="${content.url}" style="width: 30%; height: 70%;"></iframe>`;
-          break;
-        case "youtube":
-          cardContent += `<iframe width="560" height="315" src="${content.url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        default:
-          break;
-      }
+      addCardContent(contentType, content, cardContent);
     });
 
     cardSlide += `<div class="cards">
