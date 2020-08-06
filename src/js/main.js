@@ -72,17 +72,14 @@ document.addEventListener("keydown", function(event) {
   if (clicked !== undefined) {
     if (event.key === "ArrowLeft") {  
       slideNext();
-      event.altKey;
 
     } else if (event.key === "ArrowRight") {
       slidePrev();
-      event.altKey;
 
     } else if (event.key === "Escape") {
       if (document.fullscreen === true) {
         currentSlide = 0;
         slideNav(currentSlide);
-        event.altKey;
 
         closeFullscreen(clicked);
       }
