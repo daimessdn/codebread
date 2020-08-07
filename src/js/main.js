@@ -72,17 +72,8 @@ document.addEventListener("keydown", function(event) {
   if (clicked !== undefined) {
     if (event.key === "ArrowLeft") {  
       slideNext();
-
     } else if (event.key === "ArrowRight") {
       slidePrev();
-
-    } else if (event.key === "Escape") {
-      if (document.fullscreen === true) {
-        currentSlide = 0;
-        slideNav(currentSlide);
-
-        closeFullscreen(clicked);
-      }
     }
     // console.log(currentSlide);
   }
