@@ -1,3 +1,66 @@
+const getCards = () => {
+  let cardlist = document.getElementById("card-list");
+
+  const endMsg = `
+    <div id="end-msg">
+      <p>Hey, you reach <strong>at the end</strong> of the blog presentation.</p>
+      <p>You can press <strong>one more next button</strong> to exit fullscreen, or<br />
+         you can see previous slide with one or more <strong>previous button</strong>
+      </p>
+    </div>
+  `;
+
+  breads.reverse().forEach((bread) => {
+    let cards = "";
+    let breadTags = "";
+    let slideOrder = 1;
+
+    bread.slides.forEach((slide) => {
+      let cardSlide = "";
+      let cardContent = "";
+
+      if (slide.title !== "") {
+        cardContent += `<h3>${slide.title}</h3>`;
+      }    
+
+      slide.contents.forEach((content) => {
+        let contentType = content.type;
+        cardContent += addCardContent(contentType, content);
+      });
+
+    cardSlide += `<div class="cards">
+                    ${cardContent}
+                    <div class="slide-nav">
+                      <span class="pages">${slideOrder} / ${bread.slides.length}</span>
+                      <span class="ss-btn" onclick="closeFullscreen()">&times;</span>
+                    </div>
+                  </div>`;
+
+    cards += cardSlide;
+    slideOrder++;
+  });
+    
+  bread.tags.forEach((tag) => {
+    const tc = getTagColor(tag);
+    breadTags += `<span class="tag" 
+                        style="
+                          background-color: ${tc.bgc};
+                          color: ${tc.c};
+                  ">
+                    ${tag}
+                  </span>`;
+  });
+
+  cardlist.innerHTML += `<div class="slides">
+                           ${cards}
+                           ${endMsg}
+                           <div class="tags">
+                             ${breadTags}
+                           </div>
+                         </div>`;
+  });
+};
+
 const slideNav = (currentSlide, motion = (document.fullscreen === true ? screen.height : 400)) => {
 
   let motionHeight = currentSlide * motion;
