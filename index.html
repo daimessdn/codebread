@@ -25,13 +25,13 @@
       currentSlide++;
       if (currentSlide > 0) {
         currentSlide = (-1 * (document.getElementById('clicked').children.length - 3));
-      } slideNav(currentSlide); console.log(currentSlide)">
+      } slideNav(currentSlide);">
         <img src="src/icons/arrow-left-short.svg"
              alt="prev"
              title="previous" /> previous
       </button>
     <button id="next" onclick="
-    currentSlide--; console.log(clicked.children);
+    currentSlide--;
       if (currentSlide <= (-1 * (document.getElementById('clicked').children.length - 2))) {
         currentSlide = 0;
       } slideNav(currentSlide);">
