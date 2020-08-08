@@ -29,6 +29,10 @@
     left: 8px;
   }
 
+  #fullscreen {
+    display: none;
+  }
+
   #end-msg{
     margin: 20px;  
   }
