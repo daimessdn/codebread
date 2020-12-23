@@ -1,9 +1,16 @@
+@font-face {
+  font-family: "Porpora";
+  src: url("../fonts/Porpora-Regular.woff2") format("woff2"),
+       url("../fonts/Porpora-Regular.woff") format("woff"),
+       url("../fonts/Porpora-Regular.otf") format("opentype");
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Porpora", sans-serif;
   transition: background-color 0.5s ease;
 }
 
@@ -38,7 +45,7 @@ body {
   transition: all 0.2s ease;
 }
 
-pre, code, .tag {
+pre, code {
   font-family: "Roboto Mono", monospace;
   border-radius: 3px;
   background-color: #242424;
@@ -103,7 +110,7 @@ h1, h2, h3, h4, h5, h6, p, pre {
 
 
 .tags {
-  font-family: "Roboto Mono";
+  font-family: "Porpora";
   position: fixed;
   z-index: 100;
   bottom: 20px;
