@@ -37,7 +37,7 @@ document.addEventListener('click', function(e) {
     if (clicked) {
       if (target.parentElement !== clicked &&
           target.parentElement.parentElement !== clicked) {
-        document.body.style.backgroundColor = "#fff";
+        document.body.style.background = "url(\"https://cdn.pixabay.com/photo/2017/09/09/15/28/pattern-2732328_1280.png\")#fff";
 
         cards.forEach((card) =>{
           card.style.opacity = 1;
@@ -58,10 +58,9 @@ document.addEventListener('click', function(e) {
     // slideNav(currentSlide);
 
     document.querySelector(".button").style.display = "block";
-    document.body.style.backgroundColor = "#aaa";
     cards.forEach((card) => {
       if (card.id !== "clicked") {
-        card.style.opacity = 0.3;
+        card.style.opacity = 0.5;
       }
     });
   } else if (target.className === "cards") {
@@ -71,11 +70,10 @@ document.addEventListener('click', function(e) {
     // slideNav(currentSlide);
 
     document.querySelector(".button").style.display = "block";
-    document.body.style.backgroundColor = "#aaa";
 
     cards.forEach((card) => {
       if (card.id !== "clicked") {
-        card.style.opacity = 0.3;
+        card.style.opacity = 0.5;
       }
     });
   } else if (target.parentElement.className === "cards") {
@@ -85,10 +83,9 @@ document.addEventListener('click', function(e) {
     // slideNav(currentSlide);
 
     document.querySelector(".button").style.display = "block";
-    document.body.style.backgroundColor = "#aaa";
     cards.forEach((card) => {
       if (card.id !== "clicked") {
-        card.style.opacity = 0.3;
+        card.style.opacity = 0.5;
       }
     });
   }

@@ -22,28 +22,6 @@ const breads = [
     ],
   },
   {
-    tags  : ["story"],
-    slides: [
-      {
-        title: "Story about a duck",
-        contents: [
-          {type: "text", content: "Once upon a time, there was a duck swimming around the river. Suddenly, he met his friend."},
-          {type: "text", content: "He asked his friend to swim together and his friend agreed."}
-        ]
-      },
-      {
-        title: "",
-        contents: [
-          {type: "text", content: "Finally, they swam together."},
-          {type: "image", content: {
-            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGDqyt_-PDDNCBbaURYMUI9h4MrEhwHUHygA&usqp=CAU",
-            alt: "duck swimming"
-          }}
-        ]
-      }
-    ],
-  },
-  {
     tags  : ["code", "javascript"],
     slides: [
       {
