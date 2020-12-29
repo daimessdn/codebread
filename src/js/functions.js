@@ -1,6 +1,9 @@
+// get all card contents
 const getCards = () => {
   let cardlist = document.getElementById("card-list");
 
+  // message for end slide
+  //// when the slide ends on slideshow
   const endMsg = `
     <div id="end-msg">
       <p>Hey, you reach <strong>at the end</strong> of the blog presentation.</p>
@@ -10,11 +13,15 @@ const getCards = () => {
     </div>
   `;
 
+  // fill the cards
+  //// for each blog slide
   breads.reverse().forEach((bread) => {
+    // init'd empty cards and tags
     let cards = "";
     let breadTags = "";
     let slideOrder = 1;
 
+    // fill contents on each cards
     bread.slides.forEach((slide) => {
       let cardSlide = "";
       let cardContent = "";
@@ -28,6 +35,7 @@ const getCards = () => {
         cardContent += addCardContent(contentType, content);
       });
 
+    // card slide
     cardSlide += `<div class="cards">
                     ${cardContent}
                     <div class="slide-nav">
@@ -40,6 +48,8 @@ const getCards = () => {
     slideOrder++;
   });
     
+  // get the tags for each post
+  // for filling span tags
   bread.tags.forEach((tag) => {
     const tc = getTagColor(tag);
     breadTags += `<span class="tag" 
@@ -51,6 +61,8 @@ const getCards = () => {
                   </span>`;
   });
 
+  // fill the empty card list
+  //// with the blog card slided
   cardlist.innerHTML += `<div class="slides">
                            ${cards}
                            ${endMsg}
@@ -61,13 +73,14 @@ const getCards = () => {
   });
 };
 
+// moving the slide effect
 const slideNav = (currentSlide, motion = (document.fullscreen === true ? screen.height : 400)) => {
 
   let motionHeight = currentSlide * motion;
   let clicked = document.getElementById("clicked").children;
 
   for (let i = 0; i < clicked.length; i++) {
-    clicked[i].style.transform = `translateY(${motionHeight}px)`;
+    clicked[i].style.transform = `translateY(${motionHeight + 2}px)`;
   }
 };
 
@@ -79,8 +92,8 @@ const copyCode = (element) => {
   window.getSelection().removeAllRanges();
 };
 
+// make slide show
 const openFullscreen = (elem) => {
-
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.mozRequestFullScreen) { /* Firefox */
@@ -94,6 +107,7 @@ const openFullscreen = (elem) => {
   slideNav(currentSlide, screen.height); 
 };
 
+// exit slide show
 const closeFullscreen = (elem) => {
   if (document.exitFullscreen) {
     document.exitFullscreen();
@@ -107,6 +121,7 @@ const closeFullscreen = (elem) => {
   slideNav(currentSlide, 400);
 };
 
+// next slide
 const slideNext = () => {
   currentSlide++;
 
@@ -115,6 +130,7 @@ const slideNext = () => {
   }
 };
 
+// prev slide
 const slidePrev = () => {
   currentSlide--;
 
@@ -131,6 +147,7 @@ const slidePrev = () => {
   }
 };
 
+// get tag background color
 const getTagColor = (tag) => {
   switch (tag) {
     case "nodejs":
@@ -144,33 +161,34 @@ const getTagColor = (tag) => {
   }
 };
 
+// fill card content
+//// for each card
 const addCardContent = (contentType, content) => {
   switch (contentType) {
     case "text":
       return `<p>${content.content}</p>`;
     case "image":
       return `<img src="${content.content.url}"
-                           alt="${content.content.alt}">`;
+                   alt="${content.content.alt}">`;
     case "code":
       return`<pre><code
                               class="${content.lang}"
-                            >${content.content}</code><span
-                                                            class="copy"
+                            >${content.content}</code><span class="copy"
                                                             onclick="
-                                                                     copyCode(this.previousElementSibling);
-                                                                     this.innerHTML = 'copied!';
+                                                              copyCode(this.previousElementSibling);
+                                                              this.innerHTML = 'copied!';
                                                             " onmouseleave="this.innerHTML = 'copy'">copy</span></pre>`;
     case "homepage":
       return`<iframe src="${content.url}"
-                              style="width: 30%; height: 70%;"></iframe>`;
+                     style="width: 30%; height: 70%;"></iframe>`;
     case "youtube":
       return`<iframe width="560"
-                              height="315"
-                              src="${content.url}"
-                              frameborder="0"
-                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen>
-                      </iframe>`;
+                     height="315"
+                     src="${content.url}"
+                     frameborder="0"
+                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                     allowfullscreen>
+             </iframe>`;
     default:
       return;
   }

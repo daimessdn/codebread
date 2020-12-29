@@ -1,5 +1,8 @@
+// init'd highlightjs
+//// for syntax highlighting
 hljs.initHighlightingOnLoad();
 
+// window action when loaded
 document.addEventListener('DOMContentLoaded', (event) => {
   getCards();
 
@@ -22,6 +25,7 @@ document.addEventListener("keydown", function(event) {
   slideNav(currentSlide);
 });
 
+// clicked slide
 document.addEventListener('click', function(e) {
   let clicked = document.getElementById("clicked");
 
