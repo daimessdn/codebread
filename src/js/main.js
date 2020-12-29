@@ -61,7 +61,7 @@ document.addEventListener('click', function(e) {
     // currentSlide--;
     // slideNav(currentSlide);
 
-    document.querySelector(".button").style.display = "block";
+    document.querySelector(".button").style.display = "flex";
     cards.forEach((card) => {
       if (card.id !== "clicked") {
         card.style.opacity = 0.5;
@@ -73,7 +73,7 @@ document.addEventListener('click', function(e) {
     // currentSlide--;
     // slideNav(currentSlide);
 
-    document.querySelector(".button").style.display = "block";
+    document.querySelector(".button").style.display = "flex";
 
     cards.forEach((card) => {
       if (card.id !== "clicked") {
@@ -86,7 +86,7 @@ document.addEventListener('click', function(e) {
     // currentSlide--;
     // slideNav(currentSlide);
 
-    document.querySelector(".button").style.display = "block";
+    document.querySelector(".button").style.display = "flex";
     cards.forEach((card) => {
       if (card.id !== "clicked") {
         card.style.opacity = 0.5;
