@@ -80,7 +80,7 @@ const slideNav = (currentSlide, motion = (document.fullscreen === true ? screen.
   let clicked = document.getElementById("clicked").children;
 
   for (let i = 0; i < clicked.length; i++) {
-    clicked[i].style.transform = `translateY(${motionHeight + 2}px)`;
+    clicked[i].style.transform = `translateY(${motionHeight}px)`;
   }
 };
 
